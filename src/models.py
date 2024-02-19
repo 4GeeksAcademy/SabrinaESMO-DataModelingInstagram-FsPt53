@@ -41,11 +41,10 @@ class Follower(Base):
 class Like(Base):
     __tablename__='Like'
     id = Column (Integer, primary_key=True)
-    post_from_id = Column(Integer, ForeignKey('Post.id'))
-    post_to_id = Column(Integer, ForeignKey('Post.id'))
+    like_post_id = Column(Integer, ForeignKey('Post.id'))
+    like_from_user_id = Column(Integer, ForeignKey('User.id'), ForeignKey('Post.id'))
     post = relationship(Post)
-
-
+    user = relationship(User)
 
 
 
